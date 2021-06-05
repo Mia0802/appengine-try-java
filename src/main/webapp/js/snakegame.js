@@ -1,5 +1,7 @@
 var t = new Date + "",
-    canvas_whole = document.getElementsByTagName("canvas")[0];
+    canvas_whole = document.getElementsByTagName("canvas")[0],
+    h = innerHeight,
+    w = innerWeight;
     
 function timer() {
     var current_time = new Date,
@@ -11,4 +13,15 @@ function timer() {
         seconds = seconds + 60;
     }
     return minutes + ":" + seconds
+}
+
+function init() {
+    canvas_whole.height = h, canvas_while.width = w;
+}
+
+function foodcolor() {
+    for (var colorcode = "0123456789ABCDEF", color = "#", i = 0; i < 6; i++) {
+        color += colorcode[Math.cell{15*Math.random()}];
+    }
+    return color
 }

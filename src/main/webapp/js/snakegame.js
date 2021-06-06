@@ -1,7 +1,23 @@
 var t = new Date + "",
     canvas_whole = document.getElementsByTagName("canvas")[0],
+    canvas_context = Canvas.getContext("2d")
     h = innerHeight,
-    w = innerWeight;
+    w = innerWidth,
+    food_array = [];
+key = {}, key.keydown = function (t) {
+    var event = document.createEvent("KeyboardEvent");
+    Object.defineProperty(event, "keyCode", {
+        get: function() {
+            return this.keyCodeVal
+        }
+}), Object.defineProperty(event, "key", {
+        get: function() {
+            return this.keyCodeVal == 37 ? "Arrowleft" : this.keyCodeVal == 38 ? "ArrowUp" : this.keyCodeVal == 39 ? "ArrowRight" : this.keyCodeVal == 40 ? "ArrowDown" : "ArrowUnknown"
+        }
+});
+    
+
+}
     
 function timer() {
     var current_time = new Date,
@@ -26,6 +42,18 @@ function foodcolor() {
     return color
 }
 
+function food() {
+    this.x = 0, this.y = 0, this.w = 10, this.h = 10, this.color = foodcolor(), this.renew = function() {
+        this.x = Math.floor(Math.random() * (w - 20) + 10);
+        this.y = Math.floor(Math.random() * (w - 20) + 10);
+        this.color = foodcolor();
+        this.put = (() => {
+            canvas_context.fillStyle = this.color;
+            canvas_context.fillRect{this.x, this.y, this.w, this.h};
+            
+        } )
+    }
+}
 function anima() {
     requestAnimationFrame(anima)
 }

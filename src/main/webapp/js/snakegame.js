@@ -36,6 +36,7 @@ function init() {
     canvas_whole.height = h, canvas_while.width = w;
     canvas_context.fillRect(0, 0, w, innerHeight);
     for (var ifood_index = 0; food_index < 10; food_index++) food_array.push(new food);
+    s = new snake(w/2, h/2), anima()
     
 }
 
@@ -58,8 +59,14 @@ function food() {
         } )
     }
 }
+function snake() {
+    this.w = 15, this.h = 15, this.snake = [];
+    for(var target = {x: w / 2, y: h / 2}, e = 0; e < 5; e++) this.snake.push(Object.assign({}, target))
+    this.draw = fuction(){
+    }
+}
 function anima() {
     canvas_context.fillStyle = "rgba(0, 0, 0, 0.12)", canvas_context.fillRect(0, 0, canvas_whole.width, canvas_whole.height),
-        food_array.forEach(target => target.put()), document.getElementById("time").innerText = timer(), setTimeout(
+        food_array.forEach(target => target.put()), s.draw(), document.getElementById("time").innerText = timer(), setTimeout(
         () => {requestAnimationFrame(anima)}, timeout_millsecond)
 }
